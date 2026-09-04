@@ -20,7 +20,7 @@ export function RepoCard({ repoData }: RepoCardProps) {
         className="flex flex-col items-center justify-start w-80 2xl:w-91.25 h-73.25 rounded-[10px] shadow-[0_0_16px_rgba(180,180,180,1)] cursor-pointer transition-all duration-200 ease-linear hover:transform-[scale(1.05)] active:transform-[scale(1)]"
         key={repoData?.id}
       >
-        <span className="self-start pl-12.25 pt-8 pb-7 text-[15px] text-[#202E49] font-bold">
+        <span className="self-start px-12.25 pt-8 pb-7 inline-block max-w-full overflow-hidden text-ellipsis whitespace-nowrap text-[15px] text-[#202E49] font-bold">
           {repoData?.name}
         </span>
         <hr className="w-full border border-[#0070E0] " />
