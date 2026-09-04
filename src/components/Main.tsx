@@ -1,5 +1,6 @@
-import wtech from "../assets/wtech-logo.png";
 import { Search } from "./Search";
+
+import wtech from "../assets/wtech-logo.png";
 
 export function Main() {
   return (

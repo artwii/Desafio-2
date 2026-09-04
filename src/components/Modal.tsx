@@ -1,7 +1,7 @@
 import { useCurrentRepo } from "../contexts/CurrentRepoContext";
+import { useOpenModal } from "../contexts/OpenModalContext";
 
 import grayedX from "../assets/grayed-x.png";
-import { useOpenModal } from "../contexts/OpenModalContext";
 
 export function Modal() {
   const { currentRepo } = useCurrentRepo();

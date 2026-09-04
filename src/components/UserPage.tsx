@@ -1,26 +1,28 @@
-import { UserCard } from "./UserCard";
-import { RepoCard } from "./RepoCard";
-import { Modal } from "./Modal";
-import { Loading } from "../components/Loading";
-import { useLoading } from "../contexts/LoadingContext";
-import { useCurrentUser } from "../contexts/CurrentUserContext";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   type IUserData,
   type IRepo,
   getUser,
   getRepos,
 } from "../services/user.service";
-import { useNavigate } from "react-router-dom";
+import { UserCard } from "./UserCard";
+import { RepoCard } from "./RepoCard";
+import { Modal } from "./Modal";
+import { Loading } from "../components/Loading";
+import { useLoading } from "../contexts/LoadingContext";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
+import { useOpenModal } from "../contexts/OpenModalContext";
 
 import wtechBlue from "../assets/wtech-logo-blue.png";
 import grayedLeftArrow from "../assets/grayed-left-arrow.png";
 import leftArrow from "../assets/left-arrow.png";
 import grayedRightArrow from "../assets/grayed-right-arrow.png";
 import rightArrow from "../assets/right-arrow.png";
-import { useOpenModal } from "../contexts/OpenModalContext";
 
 export function UserPage() {
+  const navigate = useNavigate();
   const { currentUser } = useCurrentUser();
   const { isLoading, setLoadingState } = useLoading();
   const { openModal } = useOpenModal();
@@ -33,7 +35,7 @@ export function UserPage() {
 
   useEffect(() => {
     async function loadUser() {
-      if (currentUser != undefined) {
+      if (currentUser) {
         try {
           setLoadingState(true);
           const user = await getUser({ user: currentUser });
@@ -92,8 +94,6 @@ export function UserPage() {
       setCurrentPage(currentPage - 1);
     }
   };
-
-  const navigate = useNavigate();
 
   return (
     <>

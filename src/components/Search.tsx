@@ -2,13 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../components/Loading";
+import { getUser } from "../services/user.service";
 import { useLoading } from "../contexts/LoadingContext";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 import x from "../assets/x.png";
 import X from "../assets/X.png";
-
-import { getUser } from "../services/user.service";
 
 export function Search() {
   const [search, setSearch] = useState<string>("");
@@ -21,13 +20,13 @@ export function Search() {
     setLoadingState(true);
     const response = await getUser({ user: search });
     setError(false);
-    if (response == undefined) {
+    if (!response) {
       setError(true);
     }
     setCurrentUser(search);
     setSearch("");
     setLoadingState(false);
-    if (response != undefined) {
+    if (response) {
       navigate("/user");
     }
   };

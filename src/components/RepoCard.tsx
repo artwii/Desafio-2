@@ -1,6 +1,6 @@
+import { type IRepo } from "../services/user.service";
 import { useCurrentRepo } from "../contexts/CurrentRepoContext";
 import { useOpenModal } from "../contexts/OpenModalContext";
-import { type IRepo } from "../services/user.service";
 
 interface RepoCardProps {
   repoData: IRepo | undefined;
